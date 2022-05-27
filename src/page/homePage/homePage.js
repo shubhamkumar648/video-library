@@ -1,5 +1,6 @@
 import "./homePage.css"
-import { BsPerson } from "react-icons/bs";
+import { Header } from "../../component";
+import { Link } from "react-router-dom";
 
 
 export const HomePage = () => {
@@ -7,24 +8,16 @@ export const HomePage = () => {
     return(
 
         <>
-        <div className="Home">
-
-           <div className="left_container ">
-              <h3 className="brandName"> Namaste -Stream </h3>
-           </div>
-
-           <div className="Right_container">
-           <BsPerson className="iconLogin"/>
-           </div>
-
-        </div>
-
+       
        <div className="poster img_responsive">
           <div className="content">
 
          <div className="content2">
          <h1 >welcome to Namaste🙏-stream</h1>
-          <button class="btn btn__primary_outline">EXPLORE </button>
+          <button class="btn btn__primary_outline">
+           <Link to = "videolist" className="link__nostyle">EXPLORE</Link>
+           
+           </button>
 
          </div>
          </div>
