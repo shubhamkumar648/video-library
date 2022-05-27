@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Nunito+Sans:wght@200&family=Patrick+Hand&family=Poppins:ital,wght@0,500;1,100&family=Roboto:wght@300&display=swap');
+
+.Home {
+    width: 100%;
+    height: 5vh;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.iconLogin {
+    height: 2rem;
+    width: 2rem;
+}
+
+.brandName {
+    font-family: 'Poppins', sans-serif;
+    color: goldenrod;
+    }
+
+    
+.poster {
+    background-image: url("https://res.cloudinary.com/e-comerce/image/upload/v1653624242/istockphoto-1336543971-170667a_kufttf.jpg");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 88vh;
+    position: relative;
+    width: 100%;
+}
+
+.categoryTag {
+    margin-right: auto;
+    font-weight: 900;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44vh;
+    color: goldenrod;
+}
+
+.ctegories {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 1rem;
+}
+
+.card {
+    width: 22rem;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, .05) 0px 6px 24px 0px, rgba(0, 0, 0, .08) 0px 0px 0px 1px;
+    border: 1px solid goldenrod;
+    position: relative;
+    border-radius: 10px;
+    opacity: .8;
+
+}
+
+.card img {
+    height: 12rem;
+    border-radius: 10px;
+}
+
+.card:hover {
+    opacity: 1;
+}
+
+.categoryName {
+    height: 3rem;
+    width: 100%;
+    background-color: hsla(0, 0%, 100%, .432);
+    color: hsl(0, 100%, 50%);
+    font-size: 2rem;
+    font-weight: 900;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-top: 5px;
+}
+
+.categoryName :hover {
+   opacity: .8;
+}
