@@ -1,26 +1,29 @@
 import axios from "axios";
 import React from "react";
-import { useState,useEffect } from "react";
+import { useEffect,useState } from "react";
 import { VideoCard } from "../../component";
 import "./videoListing.css";
 import { BsCollectionPlay } from "react-icons/bs";
 import { MdOutlineExplore,MdOutlineWatchLater,MdHistory } from "react-icons/md";
 import { BiLike } from "react-icons/bi";
-
-
+import { useVideo } from "../../context/Videocontext";
+import { filterVideos } from "../../utils/filter";
 
 export const VideoListing = ()  => {
   
-const [display,setDisplay] = useState([])
+const {state,dispatch} = useVideo()
+  
+const {categories,videos,selectedCategory} = state
+const [loading,setloading] = useState(true)
 
-  useEffect( () => {
-    
+  useEffect(() => {
+
     (async() => {
 
     try{
       const response = await axios.get('/api/videos')
-             setDisplay(response.data.videos)
-             console.log(response);
+      setloading(false)
+           dispatch({type: "SET_VIDEOS",payload: response.data.videos})
                 }
   
                 catch(error) {
@@ -29,9 +32,30 @@ const [display,setDisplay] = useState([])
               })();
     }, [])
   
+     
+
+    useEffect(() => {
+      (async() => {
+  
+      try{
+        const response = await axios.get('/api/categories')
+        setloading(false)
+
+             dispatch({type: "SET_CATEGORIES",payload: response.data.categories})
+                  }
+    
+                  catch(error) {
+                      console.log(error.response);
+                  }
+                })();
+      }, [])
+    
+      const filtercard = filterVideos(videos,selectedCategory)
+
 
   return (
     <div className="main-container">
+    
       <aside className="aside-content">
         <ul>
           <li className="sidebar_item_link ">
@@ -51,14 +75,33 @@ const [display,setDisplay] = useState([])
           History</li>
         </ul>
       </aside>
+        
+        <div>
+        <div className="videocardFilter-container flex">
+           
+
+             {
+               categories.map(({_id,categoryName}) => {
+
+                 return (
+                  <p key={_id}>
+                <button  className="btn  btn__primary_outline"
+                   onClick={() => dispatch({type:"FILTER_CATEGORIES", payload:categoryName})}
+                >
+                {categoryName}
+                </button>
+                </p>
+                 )
+               })
+             }
+
+       </div>
 
       <article className="videoList-container">
-       
-       {display.map(item => {
-
+       {filtercard.map(item => {
          return (
            <div>
-             <VideoCard videos={item} key={item._id}/>
+             <VideoCard video={item} key={item._id}/>
            </div>
          )
        })}
@@ -66,7 +109,7 @@ const [display,setDisplay] = useState([])
 
       </article>
 
-      
+       </div>
 
     </div>
   );

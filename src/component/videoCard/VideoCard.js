@@ -1,12 +1,11 @@
 import React from 'react'
 
-export const VideoCard = ({videos}) => {
+export const VideoCard = ({video}) => {
 
-    const {_id,thumbnail,duration,title,avatar,alt,creatorName,views} = videos
+    const {_id,thumbnail,duration,title,avatar,alt,creatorName,views} = video
 
   return (
-
-
+ 
     <div className="videocard flex flex-col">
            <img src={thumbnail} alt="card img" className='img-responsive card-dimension' />
           <span className="duration flex">{duration}</span>
@@ -21,7 +20,6 @@ export const VideoCard = ({videos}) => {
             </div>
           </div>
     </div>
-
   )
 }
 

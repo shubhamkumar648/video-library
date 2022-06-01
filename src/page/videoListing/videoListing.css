@@ -1,7 +1,6 @@
 .main-container {
     display: grid;
     grid-template-columns: 20% 80%;
-    border: 1px solid black;
 }
 
 .aside-content {
@@ -31,9 +30,34 @@
     font-weight: 400;
     margin: 10px 0;
     padding: 1rem;
-   display: flex;
-   gap: 1rem;
+    display: flex;
+    gap: 1rem;
 }
+
+
+.videocardFilter-container {
+   gap: 5px;
+ padding-top: 1rem;
+justify-content: center;
+}
+
+.btn__primary_outline{
+   background-color: white;
+   border-radius: 10px;
+   color: black;
+   font-weight: 600;
+   border-radius: 48px;
+   padding: 9px 30px;
+}
+
+.btn__primary_outline:focus,
+.btn__primary_outline:hover
+{
+background-color: var(--primary-color);
+color: white;
+}
+
+
 
 
 .videoList-container {
@@ -53,10 +77,9 @@
 
 .videocard:hover,
 .videocard:focus {
-   background-color: hsl(0, 0%, 83%);
-    font-weight: 900;
+background-color: hsl(0, 0%, 83%);
+font-weight: 900;
 }
-
 
 .duration {
     color: whitesmoke;

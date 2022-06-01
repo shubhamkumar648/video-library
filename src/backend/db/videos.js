@@ -109,7 +109,7 @@ export const videos = [
     creatorName: "ICC ",
     avatar:
       "https://res.cloudinary.com/e-comerce/image/upload/v1653987934/icc_cgqn2k.jpg",
-    category: "music",
+    category: "sports",
     description:
       "india vs sri lanka final 2021, india vs sri lanka final match, india vs srilanka final 2011,",
   },
