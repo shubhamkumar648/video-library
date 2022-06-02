@@ -2,8 +2,8 @@
 
 .Home {
     width: 100%;
-    height: 5vh;
-    border: 1px solid black;
+    height: 7vh;
+    box-shadow: 0 0 27px 0 rgba(214, 231, 233, 0.52);
     display: flex;
     justify-content: space-between;
 }
@@ -30,7 +30,7 @@
 }
 
 .categoryTag {
-    margin-right: auto;
+    float: left;
     font-weight: 900;
 }
 
@@ -53,7 +53,7 @@
     width: 22rem;
     box-sizing: border-box;
     box-shadow: rgba(0, 0, 0, .05) 0px 6px 24px 0px, rgba(0, 0, 0, .08) 0px 0px 0px 1px;
-    border: 1px solid goldenrod;
+    border: 1px solid #daa520;
     position: relative;
     border-radius: 10px;
     opacity: .8;
