@@ -7,7 +7,7 @@ export const RoutePath = () => {
     <Routes>
       <Route path="/" element={<HomePage />} />
 
-      <Route path="videolist" element={<VideoListing />} />
+      <Route path="/videolist" element={<VideoListing />} />
     </Routes>
   );
 };

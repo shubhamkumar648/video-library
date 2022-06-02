@@ -1,5 +1,4 @@
 export const ReducerFun = (state, action) => {
-  console.log(action.payload);
   switch (action.type) {
     case "SET_VIDEOS": {
       return { ...state, videos: action.payload };
