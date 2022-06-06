@@ -1,6 +1,6 @@
 import React from "react";
 import "./singlevideocard.css";
-import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineLike,AiFillLike } from "react-icons/ai";
 import { BsCollectionPlay } from "react-icons/bs";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { useEffect } from "react";
@@ -61,8 +61,8 @@ export const SingleVideocard = ({ singleVideo }) => {
         }
       );
 
-      console.log(response);
       videoactionDispatch({type:"DISLIKE_VIDEO", payload:response.data.likes});
+      console.log(response);
 
     } 
     catch (error) {
@@ -112,7 +112,7 @@ const LikeHandler = () => {
   return (
     <div className="singlePagevideo-card flex">
       <iframe
-        src={`https://www.youtube.com/embed/`}
+        src={`https://www.youtube.com/embed/${_id}`}
         title="youtube player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -126,9 +126,16 @@ const LikeHandler = () => {
         <p>{views}</p>
 
         <div className="icon flex">
+        {likeVideo ? 
           <span>
-            <AiOutlineLike onClick={LikeHandler}/> Like
+            <AiFillLike onClick={LikeHandler}/> UnLike
           </span>
+         :
+         <span>
+            <AiOutlineLike onClick={LikeHandler}/>Like
+          </span>
+        }
+
           <span>
             {" "}
             <BsCollectionPlay />
