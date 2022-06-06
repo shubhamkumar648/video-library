@@ -1,11 +1,9 @@
-.App {
-  text-align: center;
-}
+
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+}     
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -48,4 +46,53 @@
   color: #d9d9d9;
   font-size: 1.2rem;
   margin: 1rem;
+}
+
+
+/* sidebar css for all pages */
+
+.main-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.aside-content {
+  box-shadow: 0 0 27px 0 rgba(214, 231, 233, 0.52);
+  border: 1px solid rgba(0,0,0,.05);
+}
+
+.aside-content li {
+  cursor: pointer;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  text-align: start;
+  font-weight: 600;
+}
+
+.aside-content li:hover {
+   height: 4rem;
+   width: 100%;
+   background-color: #e5e5e5;
+   color: var(--primary-color);
+}
+
+.sidebar_item_link {
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin: 10px 0;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+
+.avatar-dimension {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 2px;
+  margin-left: 2px;
 }

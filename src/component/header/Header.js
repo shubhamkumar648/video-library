@@ -10,11 +10,13 @@ export const Header = () => {
     
        <Link to="/"  className="link__nostyle ">
        <h3 className="brandName"> 
-       namaste~Stream
+         namaste~Stream
 
        </h3>
 
        </Link>
+
+     
     </div>
 
     <div className="Right_container">

@@ -1,15 +1,9 @@
 import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
-import { VideoCard } from "../../component";
+import { Sidebar, VideoCard } from "../../component";
 import "./videoListing.css";
-import { BsCollectionPlay } from "react-icons/bs";
-import {
-  MdOutlineExplore,
-  MdOutlineWatchLater,
-  MdHistory,
-} from "react-icons/md";
-import { BiLike } from "react-icons/bi";
+
 import { useVideo } from "../../context/Videocontext";
 import { filterVideos } from "../../utils/filter";
 
@@ -48,31 +42,7 @@ export const VideoListing = () => {
 
   return (
     <div className="main-container">
-      <aside className="aside-content">
-        <ul>
-          <li className="sidebar_item_link ">
-            <MdOutlineExplore className="fs-l" />
-            Explore
-          </li>
-          <li className="sidebar_item_link">
-            <BiLike className="fs-l" />
-            Liked Page
-          </li>
-          <li className="sidebar_item_link">
-            {" "}
-            <BsCollectionPlay />
-            Playlist
-          </li>
-          <li className="sidebar_item_link">
-            <MdOutlineWatchLater className="fs-l" />
-            Watchlater
-          </li>
-          <li className="sidebar_item_link">
-            <MdHistory className="fs-l" />
-            History
-          </li>
-        </ul>
-      </aside>
+      <Sidebar/>
 
       <div>
         <div className="videocardFilter-container flex">
