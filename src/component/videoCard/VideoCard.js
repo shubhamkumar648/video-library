@@ -1,14 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useVideoAction } from '../../context/Videoaction-context'
+import { useVideo } from '../../context/Videocontext'
+import { AddtoHistory } from '../../service'
+
 
 export const VideoCard = ({video}) => {
 
-    const {_id,thumbnail,duration,title,avatar,alt,creatorName,views} = video
+const {_id,thumbnail,duration,title,avatar,alt,creatorName,views} = video
+const {state,dispatch} = useVideo()
+
+const {videos} = state
+const {videoactionDispatch} = useVideoAction()
+
+const HistoryHandler = () => {
+
+  AddtoHistory(videos,videoactionDispatch )
+}
 
   return (
     <div className="videocard flex flex-col">
     
-        <Link to = {`/videolist/${_id}`} className="link__nostyle " >
+        <Link to = {`/videolist/${_id}`} className="link__nostyle " onClick={HistoryHandler} >
 
            <img src={thumbnail} alt="card img" className='img-responsive card-dimension' />
            </Link>

@@ -39,7 +39,9 @@ export const Sidebar = () => {
         </li>
         <li className="sidebar_item_link">
           <MdHistory className="fs-l" />
-          History
+          <Link to="/history" className="link__nostyle">
+            History
+          </Link>
         </li>
       </ul>
     </aside>

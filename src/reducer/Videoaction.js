@@ -12,5 +12,9 @@ export const videoActionFuntion = (state, action) => {
       return { ...state, watchLater: action.payload };
     }
 
+    case "HISTORY": {
+
+      return {...state ,history: action.payload}
+    }
   }
 };

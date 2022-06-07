@@ -10,7 +10,8 @@ export const VideoactionProvider = ({children}) => {
 const initialState = {
 
   liked: [],
-  watchLater:[]
+  watchLater:[],
+  history: []
 }
 
 const [videoactionState, videoactionDispatch] = useReducer(videoActionFuntion,initialState)
