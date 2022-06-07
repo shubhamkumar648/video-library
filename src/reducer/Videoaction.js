@@ -9,7 +9,8 @@ export const videoActionFuntion = (state, action) => {
     }
 
     case "WATCH_LATER": {
-      return { ...state, liked: action.payload };
+      return { ...state, watchLater: action.payload };
     }
+
   }
 };

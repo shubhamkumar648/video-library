@@ -2,23 +2,28 @@ import React from "react";
 import "./singlevideocard.css";
 import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 import { BsCollectionPlay } from "react-icons/bs";
-import { MdOutlineWatchLater } from "react-icons/md";
+import { MdOutlineWatchLater, MdWatchLater } from "react-icons/md";
 import { useVideoAction } from "../../context/Videoaction-context";
 import { useVideo } from "../../context/Videocontext";
 import { isVideoinPlaylist } from "../../utils/isVideoinPlaylist";
-import { RemovefromLikes } from "../../service/Like/removeFromlike";
-import { AddtoLike } from "../../service/Like/addtoLike";
-
+import {
+  AddtoLike,
+  addTowatchlater,
+  RemovefromLikes,
+  RemoveFromwatchlater,
+} from "../../service";
 
 export const SingleVideocard = ({ singleVideo }) => {
   const { _id, title, views, avatar, description, creatorName } = singleVideo;
 
   const { videoactionState, videoactionDispatch } = useVideoAction();
-  const { liked } = videoactionState;
+  const { liked, watchLater } = videoactionState;
   const { state } = useVideo();
   const { videos } = state;
 
   const likeVideo = isVideoinPlaylist(liked, _id);
+
+  const watchLaterVideo = isVideoinPlaylist(watchLater, _id);
 
   const LikeHandler = () => {
     if (likeVideo) {
@@ -28,8 +33,13 @@ export const SingleVideocard = ({ singleVideo }) => {
     }
   };
 
-   
-  
+  const WatchLaterHandler = () => {
+    if (watchLaterVideo) {
+      RemoveFromwatchlater(_id, videoactionDispatch);
+    } else {
+      addTowatchlater(videos, videoactionDispatch);
+    }
+  };
 
   return (
     <div className="singlePagevideo-card flex">
@@ -47,11 +57,11 @@ export const SingleVideocard = ({ singleVideo }) => {
 
         <div className="icon flex">
           {likeVideo ? (
-            <span  onClick={LikeHandler}>
+            <span onClick={LikeHandler}>
               <AiFillLike /> UnLike
             </span>
           ) : (
-            <span  onClick={LikeHandler}>
+            <span onClick={LikeHandler}>
               <AiOutlineLike />
               Like
             </span>
@@ -63,10 +73,17 @@ export const SingleVideocard = ({ singleVideo }) => {
             Save to Playlist
           </span>
 
-          <span >
-            <MdOutlineWatchLater />
-            Watchlater
-          </span>
+          {watchLaterVideo ? (
+            <span onClick={WatchLaterHandler}>
+              <MdWatchLater />
+              Watchlater
+            </span>
+          ) : (
+            <span onClick={WatchLaterHandler}>
+              <MdOutlineWatchLater />
+              Watchlater
+            </span>
+          )}
         </div>
         <hr />
         <div className="card-discription flex">

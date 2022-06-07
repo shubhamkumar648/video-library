@@ -33,7 +33,9 @@ export const Sidebar = () => {
         </li>
         <li className="sidebar_item_link">
           <MdOutlineWatchLater className="fs-l" />
-          Watchlater
+          <Link to="/watchlater" className="link__nostyle">
+            Watchlater
+          </Link>
         </li>
         <li className="sidebar_item_link">
           <MdHistory className="fs-l" />
