@@ -11,9 +11,8 @@ export const AddtoLike = async(video, videoactionDispatch) => {
         }
       );
       videoactionDispatch({ type: "LIKE_VIDEO", payload: response.data.likes });
-       console.log(response);
 
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };

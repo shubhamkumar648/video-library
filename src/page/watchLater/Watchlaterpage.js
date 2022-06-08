@@ -1,23 +1,22 @@
 import React from "react";
-import { Sidebar, VideoCard } from "../../component";
 import { useVideoAction } from "../../context/Videoaction-context";
+import { VideoCard,Sidebar} from "../../component";
 
-export const LikevideoPage = () => {
+export const WatchlaterPage = () => {
   const { videoactionState } = useVideoAction();
 
-  const { liked } = videoactionState;
+  const { watchLater } = videoactionState;
 
   return (
-
     <div className="main-container">
     <Sidebar/>
     <article className="videoList-container like-VideoCard">
 
-      {!liked.length ? (
-        <div className="font-xl">Do not have any like video go to to explore </div>
+      {!watchLater.length ? (
+        <span className="font-xl "> Do not have any save  video go to to explore page  </span>
       ) : (
           <>
-          {liked.map((item) => {
+          {watchLater.map((item) => {
             return (
                 <VideoCard video={item} key={item._id} />
             );
@@ -28,4 +27,4 @@ export const LikevideoPage = () => {
 
     </div>
   );
-};        
+};

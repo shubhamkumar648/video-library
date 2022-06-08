@@ -14,8 +14,7 @@ import axios from "axios";
         type: "DISLIKE_VIDEO",
         payload: response.data.likes,
       });
-      console.log(response);
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };

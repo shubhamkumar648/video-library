@@ -7,15 +7,15 @@ export const addTowatchlater = async (video,videoactionDispatch) => {
 
       { video },
       {
-        headers: {authorization: loclStoraage.getItem("token") },
+        headers: { authorization: localStorage.getItem("token") },
       }
     );
-
-    videoactionDispatch({ type: "WATCH_LATER", payload: response.data.watchlater });
     console.log(response);
+    videoactionDispatch({ type: "WATCH_LATER", payload: response.data.watchlater });
 
   } 
   catch (error) {
-    console.log(error);
+    console.log(error.response);
   }
 };
+

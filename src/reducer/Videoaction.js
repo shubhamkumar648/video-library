@@ -1,4 +1,6 @@
 export const videoActionFuntion = (state, action) => {
+console.log(action.type);
+
   switch (action.type) {
     case "LIKE_VIDEO": {
       return { ...state, liked: action.payload };

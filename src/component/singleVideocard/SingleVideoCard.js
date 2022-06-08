@@ -23,7 +23,7 @@ export const SingleVideocard = ({ singleVideo }) => {
 
   const likeVideo = isVideoinPlaylist(liked, _id);
 
-  const watchLaterVideo = isVideoinPlaylist(watchLater, _id);
+  const watchLaterVideo = isVideoinPlaylist(watchLater,_id);
 
   const LikeHandler = () => {
     if (likeVideo) {
@@ -42,8 +42,8 @@ export const SingleVideocard = ({ singleVideo }) => {
   };
 
   return (
-    <div className="singlePagevideo-card flex">
-      <iframe
+    <div className="singlePagevideo-card flex mt-2">
+      <iframe 
         src={`https://www.youtube.com/embed/${_id}`}
         title="youtube player"
         frameBorder="0"
@@ -52,49 +52,64 @@ export const SingleVideocard = ({ singleVideo }) => {
       ></iframe>
 
       <div className="singlecard-Allcontent">
-        <p> {title}</p>
-        <p>{views}</p>
+
+        <h5 className="font-xxl "> {title}</h5>
+
+        {/* <p className="font-xxl ">{views} views</p> */}
+
+        <div className="card-content flex">
+           <div className="content-avatar-container"> 
+              <img src={avatar} alt="avatar" className='avatar-dimension'/>
+            </div>
+            <div className="content-discription mt-1 ml-1 ">
+              {/* <h6 className="font-l fs-md ">{title} </h6> */}
+              <span className="light">{creatorName}</span>
+              <strong className="light">{views} views </strong>
+            </div>
+          {/* </div> */}
 
         <div className="icon flex">
           {likeVideo ? (
             <span onClick={LikeHandler}>
-              <AiFillLike /> UnLike
+              <AiFillLike className="mr-1" /> UnLike
             </span>
           ) : (
             <span onClick={LikeHandler}>
-              <AiOutlineLike />
+              <AiOutlineLike  className="mr-1"/>
               Like
             </span>
           )}
 
           <span>
             {" "}
-            <BsCollectionPlay />
+            <BsCollectionPlay className="mr-1" />
             Save to Playlist
           </span>
 
           {watchLaterVideo ? (
             <span onClick={WatchLaterHandler}>
-              <MdWatchLater />
+              <MdWatchLater className="mr-1"/>
               Watchlater
             </span>
           ) : (
             <span onClick={WatchLaterHandler}>
-              <MdOutlineWatchLater />
+              <MdOutlineWatchLater className="mr-1" />
               Watchlater
             </span>
           )}
         </div>
+        </div>
         <hr />
-        <div className="card-discription flex">
-          <div className="avatar">
+        {/* <div className="card-discription flex">
+        <div className="avatar">
             <img src={avatar} alt="avatar" className="avatar-dimension" />
           </div>
           <div className="card-content ml-1">
             <h6 className="pt-1">{creatorName}</h6>
-            <h6>{description} </h6>
           </div>
-        </div>
+        </div> */}
+        <p>{description} </p>
+
       </div>
     </div>
   );

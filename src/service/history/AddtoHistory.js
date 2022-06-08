@@ -12,7 +12,6 @@ export const AddtoHistory = async(video, videoactionDispatch) => {
     );
 
     videoactionDispatch({ type: "HISTORY", payload: response.data.history });
-    console.log(response);
 
   } 
   catch (error) {
