@@ -9,7 +9,7 @@ export const HomePage = () => {
         <div className="content">
           <div className="content2">
             <h1>welcome to Namaste🙏-stream</h1>
-            <button class="btn btn__primary">
+            <button className="btn btn__primary">
               <Link to="videolist" className="link__nostyle">
                 WATCH NOW
               </Link>

@@ -1,6 +1,9 @@
 import axios from "axios";
 
 export const AddtoLike = async(video, videoactionDispatch) => {
+   
+  console.log(video)
+
     try {
       const response = await axios.post(
         "/api/user/likes",

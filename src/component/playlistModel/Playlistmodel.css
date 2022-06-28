@@ -1,0 +1,30 @@
+.Playlist {
+ position: relative;
+}
+
+.Playlistmodel {
+ border: 1px solid black;
+ height: 10rem;
+ width: 8rem;
+ position: absolute;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.create-playlist-container {
+ height: 2rem;
+  border: 1px solid black;
+}
+
+.createPlaylist-content {
+  position: relative;
+}
+
+.createPlaylist-input {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6rem;
+}

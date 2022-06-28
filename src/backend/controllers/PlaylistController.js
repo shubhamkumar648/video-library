@@ -49,6 +49,7 @@ export const addNewPlaylistHandler = function (schema, request) {
     user.playlists.push({ ...playlist, videos: [], _id: uuid() });
     return new Response(201, {}, { playlists: user.playlists });
   }
+  
   return new Response(
     404,
     {},

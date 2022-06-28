@@ -1,14 +1,13 @@
+.singlePagevideo-card {
 
-.singlePagevideo-card{
-
-flex-direction: column; 
-justify-content: flex-start; 
-box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-width: 70%;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    width: 70%;
 }
 
 
-.singlePagevideo-card iframe{
+.singlePagevideo-card iframe {
     width: 100%;
     height: 50vh;
 }
@@ -16,7 +15,7 @@ width: 70%;
 
 
 .singlecard-Allcontent {
-    
+
     display: flex;
     flex-direction: column;
 }
@@ -28,7 +27,3 @@ width: 70%;
     font-weight: 900;
 }
 
-/* .icon-align{
-
-    padding-left: ;
-} */

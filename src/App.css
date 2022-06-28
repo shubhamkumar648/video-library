@@ -1,14 +1,17 @@
-
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}     
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.App {
+
+  text-align: center;
 }
 
 .App-header {
@@ -58,7 +61,7 @@
 
 .aside-content {
   box-shadow: 0 0 27px 0 rgba(214, 231, 233, 0.52);
-  border: 1px solid rgba(0,0,0,.05);
+  border: 1px solid rgba(0, 0, 0, .05);
 }
 
 .aside-content li {
@@ -70,10 +73,10 @@
 }
 
 .aside-content li:hover {
-   height: 4rem;
-   width: 100%;
-   background-color: #e5e5e5;
-   color: var(--primary-color);
+  height: 4rem;
+  width: 100%;
+  background-color: #e5e5e5;
+  color: var(--primary-color);
 }
 
 .sidebar_item_link {
@@ -98,16 +101,13 @@
 }
 
 .like-VideoCard {
-
   height: 16rem;
 }
 
 .clear-all-history {
-
   height: 3rem;
 }
 
 .videodisplay {
-
-  height: 18rem;
+ height: 18rem;
 }

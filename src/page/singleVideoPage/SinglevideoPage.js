@@ -6,37 +6,34 @@ import { useEffect, useState } from "react";
 import { Sidebar, SingleVideocard } from "../../component";
 import { useVideo } from "../../context/Videocontext";
 
-
-
-
 export const SinglevideoPage = () => {
-  const {Id} = useParams()
-  console.log(Id);
+  const { Id } = useParams();
 
- const {state,dispatch} = useVideo()
-
- const {videos} = state
-
-
+  const { error } = useVideo();
+  const [video, setVideo] = useState(null);
 
   useEffect(() => {
-
     (async () => {
       try {
         const response = await axios.get(`/api/video/${Id}`);
-        dispatch({type: "SET_VIDEOS", payload:response.data.video } )
+        setVideo(response.data.video);
       } catch (error) {
-        console.log(response.error);
+        console.log(error.response);
       }
     })();
-
-  },[Id]);
+  }, [Id]);
 
   return (
     <div className="main-container">
       <Sidebar />
       <article>
-        <SingleVideocard  singleVideo={videos}  key={videos._id}/>
+        {/* <SingleVideocard  singleVideo={singleVideo}  key={singleVideo._id}/>  */}
+
+        {!error && video ? (
+          <SingleVideocard singleVideo={video} {...video} key={video._id} />
+        ) : (
+          <div>loading.......</div>
+        )}
       </article>
     </div>
   );
