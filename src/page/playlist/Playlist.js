@@ -24,17 +24,19 @@ export const Playlist = () => {
         </div>
       ) : (
 
-        <div className="playlist-container">
-
+               <>
           {playlists.map(({ title, _id }) => {
             return (
+              <div className="playlist-container flex">
+
               <Link to={`/playlist/${_id}`} className="link__nostyle" key={_id}>
                 <h5>{title}</h5>
               </Link>
+              </div>
+
             );
           })}
-        </div>
-        
+        </>
       )}
     </>
 
