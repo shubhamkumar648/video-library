@@ -20,22 +20,18 @@ export const videoActionFuntion = (state, action) => {
       console.log(action.payload);
 
       return { ...state, playlists: action.payload };
-
     }
 
-    case "UPDATED_PLAYLIST":
-    {
+    case "UPDATED_PLAYLIST": {
       return {
         ...state,
         playlists: state.playlists.map((playlist) =>
           playlist._id === action.payload._id
             ? { ...action.payload }
             : { ...playlist }
-        ),
+        )
       };
     }
-
-    
 
     case "REMOVE_FROM_PLAYLIST": {
       return {
@@ -44,13 +40,11 @@ export const videoActionFuntion = (state, action) => {
           playlist._id === action.payload._id
             ? { ...action.payload }
             : { ...playlist }
-        ),
+        )
       };
     }
-  
 
-  case "DELETE_PLAYLIST":
-    return { ...state, playlists: action.payload };
+    case "DELETE_PLAYLIST":
+      return { ...state, playlists: action.payload };
   }
-
 };

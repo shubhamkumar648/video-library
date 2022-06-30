@@ -20,8 +20,11 @@ export const Header = () => {
     </div>
 
     <div className="Right_container">
-    <BsPerson className="iconLogin"/>
-    </div>
+     <Link className="link__nostyle create_acc" to="/login">
+     <BsPerson className="iconLogin"/>
+        </Link>    
+        
+        </div>
 
  </div>
   )

@@ -7,33 +7,30 @@ import { useVideoAction } from "../../context/Videoaction-context";
 import { getPlaylistVideo } from "../../utils/getPlaylistVideo";
 import "./playlistvideopage.css";
 
-
 export const PlaylistVideoPage = () => {
   const { Id } = useParams();
-  const { videoactionState, videoactionDispatch} = useVideoAction();
+  const { videoactionState, videoactionDispatch } = useVideoAction();
   const { playlists } = videoactionState;
 
   const playlistVideos = getPlaylistVideo(playlists, Id) ?? {};
 
   const { title, videos } = playlistVideos;
 
-  const deleteHandler = async(VideoId) => {
-   try {
-const response  =  await axios.delete(`/api/user/playlists/${VideoId}`,
-  {headers: {authorization:  localStorage.getItem("token")}}
-)
-videoactionDispatch({type:"DELETE_PLAYLIST", payload: response.data.playlists})
-}
-catch(error) {
-            
+  const deleteHandler = async (VideoId) => {
+    try {
+      const response = await axios.delete(`/api/user/playlists/${VideoId}`, {
+        headers: { authorization: localStorage.getItem("token") }
+      });
+      videoactionDispatch({
+        type: "DELETE_PLAYLIST",
+        payload: response.data.playlists
+      });
+    } catch (error) {
       console.log(error.response);
-
     }
+  };
 
-  }
-
-
-return (
+  return (
     <div className="main-container">
       <Sidebar />
 
@@ -41,7 +38,9 @@ return (
         <div className="playlist-video-container flex flex-col">
           <div className="flex header-container">
             <h4>{title}</h4>
-            <button className="btn" onClick={() => deleteHandler(Id)}>Delete</button>
+            <button className="btn" onClick={() => deleteHandler(Id)}>
+              Delete
+            </button>
           </div>
 
           <>
