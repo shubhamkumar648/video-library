@@ -101,7 +101,9 @@ export const SingleVideocard = ({ singleVideo }) => {
         <hr />
 
         <p className="mb-1 txt-l">{description} </p>
-        {modelDisplay && <Playlistmodel video={singleVideo}  setModelDisplay = {setModelDisplay} />}
+
+         {modelDisplay && <Playlistmodel video={singleVideo}  setModelDisplay = {setModelDisplay} />}
+
       </div>
     </div>
   );

@@ -47,5 +47,10 @@ export const videoActionFuntion = (state, action) => {
         ),
       };
     }
+  
+
+  case "DELETE_PLAYLIST":
+    return { ...state, playlists: action.payload };
   }
+
 };

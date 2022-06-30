@@ -1,30 +1,58 @@
+
+.Modal{
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-color: #00000099;
+ z-index: 1;
+}
+
+
 .Playlist {
- position: relative;
+ position: absolute;
+ top: 50%;
+ left: 50%;
 }
 
 .Playlistmodel {
- border: 1px solid black;
- height: 10rem;
- width: 8rem;
- position: absolute;
+ width: 13rem;
  display: flex;
- justify-content: center;
- align-items: center;
+ flex-wrap: wrap;
+ background-color: white;
 }
+
 
 .create-playlist-container {
- height: 2rem;
-  border: 1px solid black;
+  box-shadow: #00000099;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-around;
 }
 
-.createPlaylist-content {
-  position: relative;
-}
+
 
 .createPlaylist-input {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 6rem;
+  width: 13rem;
+  background-color: white;
 }
+
+
+.input-text {
+  border: none;
+  outline: none;
+  border-bottom:  1px solid black;
+  width: 80%;
+}
+
+
+.model-btn {
+  padding: 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.3s all;
+  border: none;
+  margin-top: 5px;
+}
+

@@ -13,6 +13,8 @@ export const ReducerFun = (state, action) => {
       return { ...state, selectedCategory: action.payload };
     }
 
+
+    
     default: {
       throw new Error("Action type not found");
     }

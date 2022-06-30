@@ -3,6 +3,8 @@ import React from "react";
 import { useState } from "react";
 import { useVideoAction } from "../../context/Videoaction-context";
 import { playlistId } from "../../utils/playlistId";
+import { MdOutlineAdd } from "react-icons/md";
+
 import "./Playlistmodel.css";
 
 export const Playlistmodel = ({ video, setModelDisplay }) => {
@@ -91,42 +93,61 @@ export const Playlistmodel = ({ video, setModelDisplay }) => {
     }
   };
 
-  return (
-    <div className="Playlist">
-      <div className="Playlistmodel">
-        <span className="create-playlist-container" onClick={createHandler}>
-          {" "}
-          Add to playlist
-        </span>
-      </div>
+  const closeModel = () => {
+    setModelDisplay();
+  };
 
-      {createPlaylist && (
-        <div className="createPlaylist-content">
-          <div className="createPlaylist-input flex-col">
-            <form onSubmit={createNewPlaylistHandler}>
+  return (
+    <div className="Modal" onClick={closeModel}>
+      <div className="Playlist" onClick={(e) => e.stopPropagation()}>
+        <div className="Playlistmodel flex flex-col">
+
+          <p className="f-xl font-xl">SAVE TO PLAYLIST</p>
+                 <hr />
+          {playlists.map(({ _id, videos, title }) => (
+            <div key={_id} className="Checkbox-input mt-1">
               <input
-                type="text"
-                value={displayPlaylist}
-                onChange={(e) => setdisplayList(e.target.value)}
+                type="checkbox"
+                checked={playlistId(videos, video._id)}
+                onChange={(e) => playListHandler(e, _id, video._id)}
               />
 
-              <button type="submit"> create playlist </button>
-            </form>
+              <span className="ml-1"> {title} </span>
+            </div>
+          ))}
+
+          <p className="create-playlist-container">
+            {" "}
+            <MdOutlineAdd onClick={createHandler} />
+            CreatePlaylist
+          </p>
+        </div>
+
+        {createPlaylist && (
+          <div className="createPlaylist-content">
+            <div className="createPlaylist-input flex flex-col">
+              <form onSubmit={createNewPlaylistHandler}>
+                <input
+                  type="text"
+                  className="input-text"
+                  value={displayPlaylist}
+                  placeholder="playlistname"
+                  onChange={(e) => setdisplayList(e.target.value)}
+                />
+
+                <button type="submit" className="model-btn">
+                  {" "}
+                  create playlist{" "}
+                </button>
+                <button onClick={closeModel} className="ml-1 model-btn ">
+                  Close
+                </button>
+              </form>
+            </div>
+
           </div>
-        </div>
-      )}
-
-      {playlists.map(({ _id, videos, title }) => (
-        <div key={_id}>
-          <input
-            type="checkbox"
-            checked={playlistId(videos, video._id)}
-            onChange={(e) => playListHandler(e, _id, video._id)}
-          />
-
-          <p>{title}</p>
-        </div>
-      ))}
+        )}
+      </div>
     </div>
   );
 };
