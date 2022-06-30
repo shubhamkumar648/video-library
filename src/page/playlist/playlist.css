@@ -1,0 +1,8 @@
+
+.playlist-container {
+    border: 1px solid black;
+    height: 2rem;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}

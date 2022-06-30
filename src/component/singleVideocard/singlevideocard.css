@@ -1,0 +1,29 @@
+.singlePagevideo-card {
+
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    width: 70%;
+}
+
+
+.singlePagevideo-card iframe {
+    width: 100%;
+    height: 50vh;
+}
+
+
+
+.singlecard-Allcontent {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    gap: 10px;
+    font-size: 1rem;
+    margin-left: auto;
+    font-weight: 900;
+}
+
