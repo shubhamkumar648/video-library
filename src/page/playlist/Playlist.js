@@ -15,7 +15,7 @@ export const Playlist = () => {
     <div className="main-container">
                  <Sidebar />
 
-  <article className="videoList-container flex flex-col ">
+  <article className="videoList-container ">
 
     <>
       {!playlists.length ? (
