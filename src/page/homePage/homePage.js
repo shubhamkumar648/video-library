@@ -10,9 +10,9 @@ export const HomePage = () => {
           <div className="content2">
             <h1>welcome to Namaste🙏-stream</h1>
             <button className="btn btn__primary">
-             <Link className="link__nostyle create_acc" to="/login">
-              WATCH NOW
-           </Link>
+              <Link to="videolist" className="link__nostyle">
+                WATCH NOW
+              </Link>
             </button>
           </div>
         </div>

@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import { createContext, useContext, useState } from "react";
 
-export const AuthProvider = () => {
+const AuthContext = createContext();
 
-    
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+
+  const encodedToken = localStorage.getItem("token");
+
   return (
-    <div>Authcontext</div>
-  )
-}
+    <AuthContext.Provider value={{ user, setUser, encodedToken }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => useContext(AuthContext);

@@ -6,20 +6,22 @@ import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { VideoProvider } from "./context/Videocontext";
 import { VideoactionProvider } from "./context/Videoaction-context";
+import { AuthProvider } from "./context/Authcontext";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-  <BrowserRouter>
-  <VideoactionProvider>
-  <VideoProvider>
-      <App />
-  </VideoProvider>
-  </VideoactionProvider>
-
+    <BrowserRouter>
+      <VideoProvider>
+        <AuthProvider>
+          <VideoactionProvider>
+            <App />
+          </VideoactionProvider>
+        </AuthProvider>
+      </VideoProvider>
     </BrowserRouter>
-</React.StrictMode>,
+  </React.StrictMode>,
   document.getElementById("root")
 );
