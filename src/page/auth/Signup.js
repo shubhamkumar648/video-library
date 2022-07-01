@@ -1,25 +1,62 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
+import { useState, useReducer } from "react";
+import { useAuth } from "../../context/Authcontext";
+import { signupReducer } from "../../reducer/signupReducer";
+import axios from "axios";
 
 export const Signup = () => {
+  const initialState = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
+  };
+
+  const [state, dispatch] = useReducer(signupReducer, initialState);
+  const { firstName, lastName, email, password } = state;
+
+  const { setUser } = useAuth();
+  const navigate = useNavigate();
+
+  const [showPass, setShowPass] = useState(false);
+
+  const signupSubmitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/auth/signup", {
+        email,
+        firstName,
+        lastName,
+        password
+      });
+
+      localStorage.setItem("token", response.data.encodedToken);
+
+      setUser(response.data.createdUser);
+      navigate("/", { replace: true });
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
   return (
     <main className="authentic_container">
       <div className="login_container flex flex-col p-2">
         <h3 className="text_center font-xl login_color">Sign up</h3>
 
-        {/* <form onSubmit={signupSubmitHandler}> */}
-        <form>
+        <form onSubmit={signupSubmitHandler}>
           <div className=" flex flex-col">
             <label for="Email" className="font-xl fs-l">
               FIRSTNAME
             </label>
             <input
               type="text"
-              // value={firstName}
-              // onChange={(e) =>
-              //   dispatch({ type: "FIRST_NAME", payload: e.target.value })
-              // }
+              value={firstName}
+              onChange={(e) =>
+                dispatch({ type: "FIRST_NAME", payload: e.target.value })
+              }
               placeholder="Enter your Email"
               className="p-1 mb-1 inp_area"
               required
@@ -32,10 +69,10 @@ export const Signup = () => {
             </label>
             <input
               type="text"
-              // value={lastName}
-              // onChange={(e) =>
-              //   dispatch({ type: "LAST_NAME", payload: e.target.value })
-              // }
+              value={lastName}
+              onChange={(e) =>
+                dispatch({ type: "LAST_NAME", payload: e.target.value })
+              }
               placeholder="Enter your Password"
               className="p-1 mb-1 inp_area"
               required
@@ -47,11 +84,11 @@ export const Signup = () => {
               EMAIL
             </label>
             <input
-              type="email"
-              // value={email}
-              // onChange={(e) =>
-              //   dispatch({ type: "EMAIL", payload: e.target.value })
-              // }
+              type="text"
+              value={email}
+              onChange={(e) =>
+                dispatch({ type: "EMAIL", payload: e.target.value })
+              }
               placeholder="Enter your Password"
               className="p-1 mb-1 inp_area"
               required
@@ -63,20 +100,23 @@ export const Signup = () => {
               PASSWORD
             </label>
             <input
-              // type= {showPass ? "text": "password"}
-              type="text"
-              // value={password}
-              // onChange={(e) =>
-              //   dispatch({ type: "PASSWORD", payload: e.target.value })
-              // }
+              type={showPass ? "text" : "password"}
+              value={password}
+              onChange={(e) =>
+                dispatch({ type: "PASSWORD", payload: e.target.value })
+              }
               placeholder="Enter your Password"
               className="p-1 mb-1 inp_area"
               required
             />
           </div>
           <div className="forgot_pass flex">
-            <input type="checkbox" id="Pass" />
-            {/* checked={showPass} onChange={() => setShowPass(!showPass)}/> */}
+            <input
+              type="checkbox"
+              id="Pass"
+              checked={showPass}
+              onChange={() => setShowPass(!showPass)}
+            />
             <label for="Pass">Show Password</label>
           </div>
           <button
