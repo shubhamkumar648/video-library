@@ -1,4 +1,4 @@
-# playX-stream
+# namste-Stream
  
  A video library app
  # Technology-used
