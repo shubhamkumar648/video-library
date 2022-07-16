@@ -111,3 +111,9 @@
 .videodisplay {
  height: 18rem;
 }
+
+.logout-btn{
+background-color: white;
+border: none;
+cursor: pointer;
+}

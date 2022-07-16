@@ -27,19 +27,19 @@ export const Playlistmodel = ({ video, setModelDisplay }) => {
         "/api/user/playlists",
 
         {
-          playlist: { title: displayPlaylist.trim() },
+          playlist: { title: displayPlaylist.trim() }
         },
 
         {
           headers: {
-            authorization: localStorage.getItem("token"),
-          },
+            authorization: localStorage.getItem("token")
+          }
         }
       );
 
       videoactionDispatch({
         type: "ADD_TO_PLAYLIST",
-        payload: response.data.playlists,
+        payload: response.data.playlists
       });
 
       console.log(response);
@@ -58,14 +58,14 @@ export const Playlistmodel = ({ video, setModelDisplay }) => {
           { video },
 
           {
-            headers: { authorization: localStorage.getItem("token") },
+            headers: { authorization: localStorage.getItem("token") }
           }
         );
 
         console.log(response);
         videoactionDispatch({
           type: "UPDATED_PLAYLIST",
-          payload: response.data.playlist,
+          payload: response.data.playlist
         });
       } catch (error) {
         console.log(error.response);
@@ -76,14 +76,14 @@ export const Playlistmodel = ({ video, setModelDisplay }) => {
           `/api/user/playlists/${playlistId}/${videoId}`,
           {
             headers: {
-              authorization: localStorage.getItem("token"),
-            },
+              authorization: localStorage.getItem("token")
+            }
           }
         );
 
         videoactionDispatch({
           type: "REMOVE_FROM_PLAYLIST",
-          payload: response.data.playlist,
+          payload: response.data.playlist
         });
 
         console.log(response);
@@ -101,9 +101,8 @@ export const Playlistmodel = ({ video, setModelDisplay }) => {
     <div className="Modal" onClick={closeModel}>
       <div className="Playlist" onClick={(e) => e.stopPropagation()}>
         <div className="Playlistmodel flex flex-col">
-
           <p className="f-xl font-xl">SAVE TO PLAYLIST</p>
-                 <hr />
+          <hr />
           {playlists.map(({ _id, videos, title }) => (
             <div key={_id} className="Checkbox-input mt-1">
               <input
@@ -144,7 +143,6 @@ export const Playlistmodel = ({ video, setModelDisplay }) => {
                 </button>
               </form>
             </div>
-
           </div>
         )}
       </div>

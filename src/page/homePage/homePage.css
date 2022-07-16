@@ -15,7 +15,7 @@
 
 .brandName {
     font-family: 'Poppins', sans-serif;
-    color: goldenrod;
+    color: var(--primary-color);
     }
 
     

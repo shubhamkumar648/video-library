@@ -13,36 +13,64 @@ import {
 } from "../../service";
 import { Playlistmodel } from "../playlistModel/Playlistmodel";
 import { useState } from "react";
+import { useLocation, useNavigate,  } from "react-router-dom";
+import { useAuth } from "../../context/Authcontext";
+
 
 export const SingleVideocard = ({ singleVideo }) => {
   const { _id, title, views, avatar, description, creatorName } = singleVideo;
-
   const { videoactionState, videoactionDispatch } = useVideoAction();
   const { liked, watchLater } = videoactionState;
+
   const likeVideo = isVideoinPlaylist(liked, _id);
   const watchLaterVideo = isVideoinPlaylist(watchLater, _id);
-
   const [modelDisplay, setModelDisplay] = useState(false);
 
-  const LikeHandler = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const {user} = useAuth()
 
+  const LikeHandler = () => {
+   if(user) {
     if (likeVideo) {
       RemovefromLikes(_id, videoactionDispatch);
     } else {
       AddtoLike(singleVideo, videoactionDispatch);
     }
+  }
+
+  else {
+    navigate("/login", { replace: true, state: { from: location } });
+
+  }
   };
 
   const WatchLaterHandler = () => {
+
+    if (user) {
     if (watchLaterVideo) {
       RemoveFromwatchlater(_id, videoactionDispatch);
     } else {
       addTowatchlater(singleVideo, videoactionDispatch);
     }
+
+  }
+
+  else {
+    navigate("/login", { replace: true, state: { from: location } });
+
+
+  }
   };
 
   const plalistHandler = () => {
+     if (user) {
     setModelDisplay((prev) => !prev);
+     }
+     else {
+      navigate("/login", { replace: true, state: { from: location } });
+
+     }
   };
 
   return (

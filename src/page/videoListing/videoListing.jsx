@@ -24,7 +24,7 @@ export const VideoListing = () => {
               onClick={() =>
                 dispatch({
                   type: "FILTER_CATEGORIES",
-                  payload: categoryName,
+                  payload: categoryName
                 })
               }
             >
