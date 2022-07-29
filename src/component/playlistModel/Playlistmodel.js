@@ -8,15 +8,19 @@ import { MdOutlineAdd } from "react-icons/md";
 import "./Playlistmodel.css";
 
 export const Playlistmodel = ({ video, setModelDisplay }) => {
+
   const [createPlaylist, setcreatePlaylist] = useState(false);
 
   const { videoactionState, videoactionDispatch } = useVideoAction();
   const { playlists } = videoactionState;
 
   const [displayPlaylist, setdisplayList] = useState("");
+  
 
   const createHandler = () => {
+
     setcreatePlaylist((prev) => !prev);
+
   };
 
   const createNewPlaylistHandler = async (e) => {
@@ -136,7 +140,7 @@ export const Playlistmodel = ({ video, setModelDisplay }) => {
 
                 <button type="submit" className="model-btn">
                   {" "}
-                  create playlist{" "}
+                  Create Playlist{" "}
                 </button>
                 <button onClick={closeModel} className="ml-1 model-btn ">
                   Close
